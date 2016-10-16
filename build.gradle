@@ -2,8 +2,7 @@ apply plugin: 'java'
 //Identifies project’sversion through a number scheme
 version = 0.1
 
-//Sets Java version compilation compatibility to 1.6
-sourceCompatibility = 1.6
+sourceCompatibility = 1.7
 
 //Adds Main-Class header to JAR file’s manifest
 

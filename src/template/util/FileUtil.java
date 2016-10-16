@@ -47,6 +47,7 @@ public class FileUtil {
             } finally {
                 if (output != null) {
                     try {
+                        output.flush();
                         output.close();
                     } catch (IOException var16) {
                         var16.printStackTrace();
@@ -56,5 +57,10 @@ public class FileUtil {
             }
         }
 
+    }
+
+    public static String getPath() {
+        //方式一
+        return System.getProperty("user.dir");
     }
 }

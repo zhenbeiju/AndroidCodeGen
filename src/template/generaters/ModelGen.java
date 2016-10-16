@@ -56,7 +56,7 @@ public class ModelGen {
         System.out.println(result);
         //TODO output to file
         FileUtil.exportString(
-                "./model/#{name.upcase}.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
+                FileUtil.getPath() + "/model/#{name.upcase}.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
                 , result);
 
     }
