@@ -1,6 +1,7 @@
 package template.generaters;
 
 import template.FieldModel;
+import template.KeyList;
 import template.util.FileUtil;
 import template.util.StringCaseUtil;
 
@@ -11,7 +12,8 @@ import java.util.List;
  */
 public class ModelGen {
 
-    public static String ModelTemplate = "public class #{name} {\n" +
+    public static String ModelTemplate = "package #{packageName}.model;\n" +
+            "public class #{name.upcase} {\n" +
             "\n" +
             "#{filed}" +
             "\n" +
@@ -21,10 +23,10 @@ public class ModelGen {
     public static String FeildTemplate = "\tprivate #{type} #{fieldName.lowercase};\n";
     public static String MethodTemplate = "\tpublic void set#{fieldName.upcase}(#{type} #{fieldName.lowercase}){\n" +
             "\t\t" + "this.#{fieldName.lowercase} = #{fieldName.lowercase};\n" +
-            "\t}\n" +
+            "\t}\n\n" +
             "\tpublic #{type} get#{fieldName.upcase}(){\n" +
             "\t\treturn this.#{fieldName.lowercase};\n" +
-            "\t}\n";
+            "\t}\n\n";
 
 
     /**
@@ -51,9 +53,11 @@ public class ModelGen {
         }
 
         String result = ModelTemplate.replace("#{name}", name)
+                .replace("#{name.upcase}", StringCaseUtil.UpCase(name))
+                .replaceAll("#\\{packageName\\}", KeyList.packageName)
                 .replace("#{filed}", fieldsBuild.toString())
                 .replace("#{method}", methodBuilder.toString());
-        System.out.println(result);
+//        System.out.println("try output result");
         //TODO output to file
         FileUtil.exportString(
                 FileUtil.getPath() + "/model/#{name.upcase}.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))

@@ -1,16 +1,19 @@
 package template.generaters;
 
 import template.FieldModel;
+import template.KeyList;
 import template.util.FileUtil;
 import template.util.StringCaseUtil;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by zhanglin on 16-10-12.
  */
 public class ListGen {
-    private static String CLASS_TEMPLATE = "" +
+    private static String CLASS_TEMPLATE = "package #{packageName}.fragment;\n" +
             "\n" +
             "import android.content.DialogInterface;\n" +
             "import android.os.Bundle;\n" +
@@ -27,6 +30,11 @@ public class ListGen {
             "import android.widget.TextView;\n" +
             "\n" +
             "\n" +
+            "import #{packageName}.R;\n" +
+            "import #{packageName}.model.#{name.upcase};\n" +
+            "import commanutil.base.BaseFragment;\n" +
+            "import #{packageName}.fragment.Create#{name.upcase}Fragment;\n" +
+            "import #{packageName}.fragment.Show#{name.upcase}Fragment;\n" +
             "import java.util.List;\n" +
 
             "\n" +
@@ -76,12 +84,6 @@ public class ListGen {
             "    public void getData() {\n" +
             "       //TODO refreshData\n" +
             "    }\n" +
-            "\n" +
-            "    @Override\n" +
-            "    public void onPause() {\n" +
-            "        super.onPause();\n" +
-            "    }\n" +
-            "\n" +
             "\n" +
             "    @Override\n" +
             "    public void onPause() {\n" +
@@ -161,7 +163,7 @@ public class ListGen {
             "}\n";
     public static String FIELD_TEMPLATE = "\tprivate TextView #{fieldName.lowercase}Tv;\n";
     public static String FIND_TEMPLATE = "\t\t#{fieldName.lowercase}Tv = (TextView)view.findViewById(R.id.#{fieldName.XMLCase})\n";
-    public static String SET_TEMPLATE = "\t\t\t#{fieldName.lowercase}tv.setText(#{name.lowercase}.get#{fieldName.upcase}());\n";
+    public static String SET_TEMPLATE = "\t\t\t#{fieldName.lowercase}Tv.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
 
     public static void gen(String name, List<FieldModel> models) {
 
@@ -177,17 +179,26 @@ public class ListGen {
             String set = SET_TEMPLATE.replace("#{fieldName.lowercase}", StringCaseUtil.LowCase(model.name))
                     .replace("#{name.lowercase}", StringCaseUtil.LowCase(name))
                     .replace("#{fieldName.upcase}", StringCaseUtil.UpCase(model.name));
+            Pattern patter = Pattern.compile("(.*)?#Content\\{(.*)\\}(.*)?");
+            Matcher matcher = patter.matcher(set);
+            if (matcher.find()) {
+                String content = matcher.group(2);
+                String deFormater = model.type.formater.formater().replace("#{value}", content);
+                set = set.replace("#Content{" + content + "}", deFormater);
+            }
             setBuilder.append(set);
+
+
         }
 
         String result = CLASS_TEMPLATE.replaceAll("#\\{name.upcase\\}", StringCaseUtil.UpCase(name))
                 .replaceAll("#\\{name.lowercase\\}", StringCaseUtil.LowCase(name))
                 .replaceAll("#\\{name.XMLCase\\}", StringCaseUtil.XMLCase(name))
                 .replaceAll("#\\{setUIItem\\}", setBuilder.toString())
-
+                .replaceAll("#\\{packageName\\}", KeyList.packageName)
                 .replaceAll("#\\{findUIItem\\}", findBuilder.toString())
                 .replaceAll("#\\{UIItem\\}", fieldBuilder.toString());
-        System.out.println(result);
+//        System.out.println(result);
         FileUtil.exportString("./fragment/List#{name.upcase}Fragment.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
                 , result);
     }

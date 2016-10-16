@@ -55,7 +55,7 @@ public class CreateXMLGen {
         }
 
         String result = CLASS_TEMPLATE.replace("#{UIITEM}", builder.toString());
-        System.out.println(result);
+//        System.out.println(result);
 
 
     }

@@ -38,7 +38,6 @@ public class StringCaseUtil {
                 }
 
             }
-            System.out.println(builder.toString());
             return builder.toString();
         } else {
             return name;

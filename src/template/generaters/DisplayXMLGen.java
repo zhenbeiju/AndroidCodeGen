@@ -58,6 +58,6 @@ public class DisplayXMLGen {
             builder.append(uiItem);
         }
         String result = CLASS_TEMPLATE.replace("#{UIITEM}", builder.toString());
-        System.out.println(result);
+//        System.out.println(result);
     }
 }

@@ -31,7 +31,8 @@ public class ListXMLGen {
             "</LinearLayout>";
 
     public static void gen(String name, List<FieldModel> models) {
-        System.out.println(CLASS_TEMPLATE);
+//        System.out.println(CLASS_TEMPLATE);
+        //TODO
     }
 
 }

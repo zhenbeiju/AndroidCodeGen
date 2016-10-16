@@ -19,10 +19,14 @@ public class FileUtil {
     }
 
     public static void writeArrayStringToFile(ArrayList<String> srcArray, String destFile, String trim, boolean isAdd) {
+        System.out.println("try output");
         if (srcArray != null && srcArray.size() > 0) {
             File file = new File(destFile);
             BufferedWriter output = null;
             if (!file.exists()) {
+                if (!file.getParentFile().exists()) {
+                    file.getParentFile().mkdirs();
+                }
                 try {
                     file.createNewFile();
                 } catch (IOException var17) {
@@ -55,6 +59,8 @@ public class FileUtil {
                 }
 
             }
+        } else {
+            System.out.println("none value");
         }
 
     }

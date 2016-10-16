@@ -1,8 +1,9 @@
 import template.CodeGen;
 import template.FieldModel;
 import template.FieldType;
+import template.KeyList;
+import template.util.FileUtil;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,12 @@ public class Main {
         if (args.length > 0) {
             System.out.println(args);
         }
+
+        String path = FileUtil.getPath();
+        String packgeName = path.substring(path.lastIndexOf("java") + 5).replaceAll("/", ".");
+        System.out.println(packgeName);
+        KeyList.class_path = path;
+        KeyList.packageName = packgeName;
 
         List<FieldModel> testModel = new ArrayList<>();
         testModel.add(new FieldModel("Name", FieldType.STRING));

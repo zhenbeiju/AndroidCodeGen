@@ -41,7 +41,7 @@ public enum FieldType {
     DOUBLE("double", CodeTemplate.editNumberXmlName, new IValueFormater() {
         @Override
         public String formater() {
-            return "String.format(#{value})";
+            return "String.valueOf(#{value})";
         }
 
         @Override
