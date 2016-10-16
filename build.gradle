@@ -1,0 +1,27 @@
+apply plugin: 'java'
+//Identifies project’sversion through a number scheme
+version = 0.1
+
+//Sets Java version compilation compatibility to 1.6
+sourceCompatibility = 1.6
+
+//Adds Main-Class header to JAR file’s manifest
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    //Replaces conventional test source code directory with list of different directories
+
+}
+
+dependencies {
+}
