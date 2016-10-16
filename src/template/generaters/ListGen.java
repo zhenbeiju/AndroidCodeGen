@@ -128,7 +128,7 @@ public class ListGen {
             "\n" +
             "        @Override\n" +
             "        public void onBindViewHolder(ViewHolder holder, int position) {\n" +
-            "            holder.bindData(#{name.lowercase}s[position]);\n" +
+            "            holder.bindData(#{name.lowercase}s.get(position));\n" +
             "        }\n" +
             "\n" +
             "        @Override\n" +
@@ -161,8 +161,8 @@ public class ListGen {
             "        }\n" +
             "    }\n" +
             "}\n";
-    public static String FIELD_TEMPLATE = "\tprivate TextView #{fieldName.lowercase}Tv;\n";
-    public static String FIND_TEMPLATE = "\t\t#{fieldName.lowercase}Tv = (TextView)view.findViewById(R.id.#{fieldName.XMLCase})\n";
+    public static String FIELD_TEMPLATE = "\t\tprivate TextView #{fieldName.lowercase}Tv;\n";
+    public static String FIND_TEMPLATE = "\t\t#{fieldName.lowercase}Tv = (TextView)itemView.findViewById(R.id.#{fieldName.XMLCase});\n";
     public static String SET_TEMPLATE = "\t\t\t#{fieldName.lowercase}Tv.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
 
     public static void gen(String name, List<FieldModel> models) {

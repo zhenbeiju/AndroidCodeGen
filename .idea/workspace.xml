@@ -2,24 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9dcba6f-14da-43eb-8380-3ba162623a51" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/template/KeyList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/FieldType.java" afterPath="$PROJECT_DIR$/src/template/FieldType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/CreateGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/CreateGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/CreateXMLGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/CreateXMLGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/DisplayGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/DisplayGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/DisplayXMLGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/DisplayXMLGen.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/ListGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/ListGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/ListXMLGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/ListXMLGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/ModelGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/ModelGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/util/FileUtil.java" afterPath="$PROJECT_DIR$/src/template/util/FileUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/util/StringCaseUtil.java" afterPath="$PROJECT_DIR$/src/template/util/StringCaseUtil.java" />
     </list>
     <ignored path="AndroidCodeGen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DisplayGen.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DisplayGen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/template/generaters/DisplayGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80833334">
-              <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListGen.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ListGen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/template/generaters/ListGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="181" column="10" selection-start-line="181" selection-start-column="10" selection-end-line="187" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.5783333">
+              <caret line="130" column="72" selection-start-line="130" selection-start-column="72" selection-end-line="130" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -200,8 +189,8 @@
         <option value="$PROJECT_DIR$/src/template/generaters/ModelGen.java" />
         <option value="$PROJECT_DIR$/src/template/FieldType.java" />
         <option value="$PROJECT_DIR$/src/template/generaters/CreateGen.java" />
-        <option value="$PROJECT_DIR$/src/template/generaters/ListGen.java" />
         <option value="$PROJECT_DIR$/src/template/generaters/DisplayGen.java" />
+        <option value="$PROJECT_DIR$/src/template/generaters/ListGen.java" />
       </list>
     </option>
   </component>
@@ -864,7 +853,7 @@
       <option name="number" value="Default" />
       <updated>1476236955432</updated>
       <workItem from="1476236958731" duration="54637000" />
-      <workItem from="1476613823568" duration="9203000" />
+      <workItem from="1476613823568" duration="9504000" />
     </task>
     <servers />
   </component>
@@ -895,7 +884,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63840000" />
+    <option name="totallyTimeSpent" value="64141000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-9" width="1922" height="1090" extended-state="6" />
@@ -1220,20 +1209,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/template/generaters/ListGen.java">
+    <entry file="file://$PROJECT_DIR$/src/template/generaters/DisplayGen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="181" column="10" selection-start-line="181" selection-start-column="10" selection-end-line="187" selection-end-column="13" />
+          <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/template/generaters/DisplayGen.java">
+    <entry file="file://$PROJECT_DIR$/src/template/generaters/ListGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80833334">
-          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.5783333">
+          <caret line="130" column="72" selection-start-line="130" selection-start-column="72" selection-end-line="130" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
