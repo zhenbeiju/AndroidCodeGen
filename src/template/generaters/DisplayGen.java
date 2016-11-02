@@ -27,36 +27,60 @@ public class DisplayGen {
             "import #{packageName}.model.#{name.upcase};\n" +
             "import commanutil.base.BaseFragment;\n" +
             "public class Show#{name.upcase}Fragment extends BaseFragment {\n" +
-            "\tprivate #{name.upcase} #{name.lowercase};\n" +
+            "    private #{name.upcase} #{name.lowercase};\n" +
             "#{UIItems}\n" +
-            "\t@Override\n" +
-            "\tpublic void setData(Object object) {\n" +
-            "\t\tsuper.setData(object);\n" +
-            "\t\tthis.#{name.lowercase} = (#{name.upcase})object;\n" +
-            "\t}\n\n" +
-            "\t@Nullable\n" +
-            "\t@Override\n" +
-            "\tpublic View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n" +
-            "\t\tView view = inflater.inflate(R.layout.fragment_show_#{name.XMLCase}, null);\n" +
+            "    @Override\n" +
+            "    public void setData(Object... object) {\n" +
+            "        if (object != null && object[0] != null) {"+
+            "            this.#{name.lowercase} = (#{name.upcase})object[0];\n" +
+            "        }"+
+            "    }\n\n" +
+            "    @Nullable\n" +
+            "    @Override\n" +
+            "    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n" +
+            "        View view = inflater.inflate(R.layout.fragment_show_#{name.XMLCase}, null);\n" +
             "#{findUIItem}\n" +
-            "\t\treturn view;\n" +
-            "\t}\n\n" +
-            "\t@Override\n" +
-            "\tpublic void onResume() {\n" +
-            "\t\tsuper.onResume();\n" +
-            "\t\tupdateUI();\n" +
-            "\t}\n\n" +
-            "\tpublic void updateUI() {\n" +
-            "\t\tif (#{name.lowercase} != null) {\n" +
-            "\t\t\t//TODO update UI\n" +
+            "        setHasOptionsMenu(true);"+
+            "        return view;\n" +
+            "    }\n\n" +
+            "    @Override\n" +
+            "    public void onResume() {\n" +
+            "        super.onResume();\n" +
+            "        updateUI();\n" +
+            "    }\n\n" +
+            "    @Override\n" +
+            "    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {\n" +
+            "        super.onCreateOptionsMenu(menu, inflater);\n" +
+            "        inflater.inflate(R.menu.edit,menu);\n" +
+            "        inflater.inflate(R.menu.delete,menu);\n" +
+            "    }\n" +
+            "\n" +
+            "    @Override\n" +
+            "    public boolean onOptionsItemSelected(MenuItem item) {\n" +
+            "        if(item.getItemId() ==R.menu.edit){\n" +
+            "            jumpToFragment(Create#{name.upcase}Fragment.class, #{name.lowercase});\n" +
+            "            return true;\n" +
+            "        }else if(item.getItemId() ==R.menu.delete){\n" +
+            "            if(TestManager.delete(#{name.lowercase})){\n" +
+            "                getActivity().onBackPressed();\n" +
+            "            }else{\n" +
+            "                DialogInfo.showToast(\"delete fail!\");\n" +
+            "            }\n" +
+            "            return true;\n" +
+            "        }\n" +
+            "        return super.onOptionsItemSelected(item);\n" +
+            "    }"+
+            "    public void updateUI() {\n" +
+            "        if (#{name.lowercase} != null) {\n" +
+            "            //TODO update UI\n" +
             "#{setUIItem}\n" +
-            "\t\t}\n" +
-            "\t}\n\n" +
+            "        }\n" +
+            "    }\n\n" +
             "}";
 
-    public static String FIELD_TEMPLATE = "\tprivate TextView #{fieldName.lowercase}Tv;\n";
-    public static String FIND_TEMPLATE = "\t\t#{fieldName.lowercase}Tv = (TextView)view.findViewById(R.id.#{fieldName.XMLCase});\n";
-    public static String SET_TEMPLATE = "\t\t\t#{fieldName.lowercase}Tv.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
+    public static String FIELD_TEMPLATE = "    private TextView #{fieldName.lowercase}Tv;\n";
+    public static String FIND_TEMPLATE = "        #{fieldName.lowercase}Tv = (TextView)view.findViewById(R.id.#{fieldName.XMLCase});\n";
+    public static String SET_TEMPLATE = "            #{fieldName.lowercase}Tv.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
 
     public static void gen(String name, List<FieldModel> models) {
         StringBuilder fieldBuilder = new StringBuilder();

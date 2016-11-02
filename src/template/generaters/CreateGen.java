@@ -28,55 +28,61 @@ public class CreateGen {
             "import #{packageName}.model.#{name.upcase};\n" +
             "import commanutil.base.BaseFragment;\n" +
             "public class Create#{name.upcase}Fragment extends BaseFragment {\n" +
-            "\tprivate #{name.upcase} #{name.lowercase};\n" +
+            "    private #{name.upcase} #{name.lowercase};\n" +
             "#{UIItems}\n" +
-            "\t@Override\n" +
-            "\tpublic void setData(Object object) {\n" +
-            "\t\tsuper.setData(object);\n" +
-            "\t\tthis.#{name.lowercase} = (#{name.upcase})object;\n" +
-            "\t}\n\n" +
-            "\t@Nullable\n" +
-            "\t@Override\n" +
-            "\tpublic View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n" +
-            "\t\tView view = inflater.inflate(R.layout.fragment_edit_#{name.XMLCase}, null);\n\n" +
+            "    @Override\n" +
+            "    public void setData(Object... object) {\n" +
+            "        if (object != null && object[0] != null) {"+
+            "            this.#{name.lowercase} = (#{name.upcase})object[0];\n" +
+            "        } else {"+
+            "            this.test = new Test();\n" +
+            "        }"+
+            "    }\n\n" +
+            "    @Nullable\n" +
+            "    @Override\n" +
+            "    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n" +
+            "        View view = inflater.inflate(R.layout.fragment_create_#{name.XMLCase}, null);\n\n" +
             "#{findUIItem}\n" +
-            "\t\tsetHasOptionsMenu(true);\n" +
-            "\t\treturn view;\n" +
-            "\t}\n\n" +
-            "\t@Override\n" +
-            "\tpublic void onResume() {\n" +
-            "\t\tsuper.onResume();\n" +
-            "\t\tupdateUI();\n" +
-            "\t}\n\n" +
-            "\tpublic void updateUI() {\n" +
-            "\t\tif (#{name.lowercase} != null) {\n" +
-            "\t\t\t//TODO update UI\n" +
-            "#{setUIItem}\n" +
-            "\t\t}\n" +
-            "\t}\n\n" +
-            "\t@Override\n" +
-            "\tpublic void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {\n" +
-            "\t\tsuper.onCreateOptionsMenu(menu, inflater);\n" +
-            "\t\tinflater.inflate(R.menu.done, menu);\n" +
-            "\t}\n\n" +
-            "\t@Override\n" +
-            "\tpublic boolean onOptionsItemSelected(MenuItem item) {\n" +
-            "\t\tif (item.getItemId() == R.menu.done) {\n" +
-            "\t\t\t//TODO READ VALUE\n" +
-            "#{getUIItem}\n" +
+            "        setHasOptionsMenu(true);\n" +
+            "        return view;\n" +
+            "    }\n\n" +
+            "    @Override\n" +
+            "    public void onResume() {\n" +
+            "        super.onResume();\n" +
+            "        updateUI();\n" +
+            "    }\n\n" +
+            "    public void updateUI() {\n" +
+            "        if (#{name.lowercase} != null) {\n" +
+            "            //TODO update UI\n" +
+            "            #{setUIItem}\n" +
+            "        }\n" +
+            "    }\n\n" +
+            "    @Override\n" +
+            "    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {\n" +
+            "        super.onCreateOptionsMenu(menu, inflater);\n" +
+            "        inflater.inflate(R.menu.done, menu);\n" +
+            "    }\n\n" +
+            "    @Override\n" +
+            "    public boolean onOptionsItemSelected(MenuItem item) {\n" +
+            "        if (item.getItemId() == R.menu.done) {\n" +
+            "            //TODO READ VALUE\n" +
+            "            #{getUIItem}\n" +
             "\n" +
-            "\t\t\t//TODO SAVE\n" +
+            "            //TODO please overwrite blow code\n" +
+            "            if (#{name.upcase}Manager.insertOrUpdate(#{name.lowercase})) {\n" +
+            "                getActivity().onBackPressed();\n" +
+            "            }"+
             "\n" +
-            "\t\t\treturn true;\n" +
-            "\t\t}\n" +
-            "\t\treturn super.onOptionsItemSelected(item);\n" +
-            "\t}" +
+            "            return true;\n" +
+            "        }\n" +
+            "        return super.onOptionsItemSelected(item);\n" +
+            "    }" +
             "}";
 
-    public static String FIELD_TEMPLATE = "\tprivate EditText #{fieldName.lowercase}Et;\n";
-    public static String FIND_TEMPLATE = "\t\t#{fieldName.lowercase}Et = (EditText)view.findViewById(R.id.#{fieldName.XMLCase});\n";
-    public static String SET_TEMPLATE = "\t\t\t#{fieldName.lowercase}Et.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
-    public static String GET_TEMPLATE = "\t\t\t#{name.lowercase}.set#{fieldName.upcase}(#Content{#{fieldName.lowercase}Et.getText().toString()});\n";
+    public static String FIELD_TEMPLATE = "    private EditText #{fieldName.lowercase}Et;\n";
+    public static String FIND_TEMPLATE = "        #{fieldName.lowercase}Et = (EditText)view.findViewById(R.id.#{fieldName.XMLCase});\n";
+    public static String SET_TEMPLATE = "            #{fieldName.lowercase}Et.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
+    public static String GET_TEMPLATE = "            #{name.lowercase}.set#{fieldName.upcase}(#Content{#{fieldName.lowercase}Et.getText().toString()});\n";
 
 
     public static void gen(String name, List<FieldModel> models) {

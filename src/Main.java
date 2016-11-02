@@ -4,6 +4,8 @@ import template.FieldType;
 import template.KeyList;
 import template.util.FileUtil;
 
+import java.io.File;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,14 @@ public class Main {
         }
 
         String path = FileUtil.getPath();
-        String packgeName = path.substring(path.lastIndexOf("java") + 5).replaceAll("/", ".");
+        System.out.println(path);
+        KeyList.res_path =path.substring(0,path.lastIndexOf("java"))+"res"+File.separator;
+        System.out.println(KeyList.res_path);
+        // replace all not work
+        while (path.contains(File.separator)){
+            path =path.replace(File.separator, ".");
+        }
+        String packgeName = path.substring(path.lastIndexOf("java") + 5);
         System.out.println(packgeName);
         KeyList.class_path = path;
         KeyList.packageName = packgeName;
@@ -27,6 +36,9 @@ public class Main {
         testModel.add(new FieldModel("Price", FieldType.DOUBLE));
         CodeGen codeGen = new CodeGen("Test", testModel);
         codeGen.doGenerate();
+
+
+
 //        getPath();
     }
 

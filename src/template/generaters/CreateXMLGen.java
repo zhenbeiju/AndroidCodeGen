@@ -1,6 +1,8 @@
 package template.generaters;
 
 import template.FieldModel;
+import template.KeyList;
+import template.util.FileUtil;
 import template.util.StringCaseUtil;
 
 import java.io.File;
@@ -50,12 +52,14 @@ public class CreateXMLGen {
 
             String ui = UI_ITEM_TEMPLATE.replace("#{fieldEdit}", model.type.xmlEditModel)
                     .replace("#{fieldName.upcase}", StringCaseUtil.UpCase(model.name))
-                    .replaceAll("#\\{fieldName.XMLCase\\}", StringCaseUtil.XMLCase(model.name));
+                    .replaceAll("#\\{fieldName.XMLCase}", StringCaseUtil.XMLCase(model.name));
             builder.append(ui);
         }
 
         String result = CLASS_TEMPLATE.replace("#{UIITEM}", builder.toString());
-//        System.out.println(result);
+        FileUtil.exportString(KeyList.res_path+"layout/fragment_create_"+StringCaseUtil.XMLCase(fileName)+".xml"
+        ,result);
+
 
 
     }

@@ -36,6 +36,8 @@ public class ListGen {
             "import #{packageName}.fragment.Create#{name.upcase}Fragment;\n" +
             "import #{packageName}.fragment.Show#{name.upcase}Fragment;\n" +
             "import java.util.List;\n" +
+            "import java.util.ArrayList;\n" +
+
 
             "\n" +
             "public class List#{name.upcase}Fragment extends BaseFragment {\n" +
@@ -44,13 +46,11 @@ public class ListGen {
             "    RecyclerView recycler;\n" +
             "    SwipeRefreshLayout swipe;\n" +
             "    private MyAdapter myAdapter;\n" +
-
             "    private List<#{name.upcase}> #{name.lowercase}s = new ArrayList();\n" +
             "\n" +
             "    @Override\n" +
-            "    public void setData(Object object) {\n" +
-            "\t\tsuper.setData(object);\n" +
-            "        this.#{name.lowercase}s = (List<#{name.upcase}>)object;\n" +
+            "    public void setData(Object... object) {\n" +
+            "        this.#{name.lowercase}s = (List<#{name.upcase}>)object[0];\n" +
             "    }\n" +
             "\n" +
             "    @Nullable\n" +
@@ -121,7 +121,7 @@ public class ListGen {
             "\n" +
             "        @Override\n" +
             "        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {\n" +
-            "            View view = inflater.inflate(R.layout.#{name.XMLCase}_item, null);\n" +
+            "            View view = inflater.inflate(R.layout.item_#{name.XMLCase}, null);\n" +
             "            ViewHolder holder = new ViewHolder(view);\n" +
             "            return holder;\n" +
             "        }\n" +
@@ -133,7 +133,7 @@ public class ListGen {
             "\n" +
             "        @Override\n" +
             "        public int getItemCount() {\n" +
-            "            return #{name.lowercase}s.length;\n" +
+            "            return #{name.lowercase}s.size();\n" +
             "        }\n" +
             "    }\n" +
             "\n" +

@@ -11,7 +11,6 @@ public class CodeGen {
     List<FieldModel> fieldModels;
     String modelName;
 
-
     public CodeGen(String modelName, List<FieldModel> fieldModels) {
         this.fieldModels = fieldModels;
         this.modelName = modelName;
@@ -21,11 +20,16 @@ public class CodeGen {
     public void doGenerate() {
         ModelGen.gen(modelName, fieldModels);
         CreateGen.gen(modelName, fieldModels);
+        CreateXMLGen.gen(modelName,fieldModels);
         DisplayGen.gen(modelName, fieldModels);
-        ListGen.gen(modelName, fieldModels);
-        CreateXMLGen.gen(modelName, fieldModels);
         DisplayXMLGen.gen(modelName, fieldModels);
+        ListGen.gen(modelName, fieldModels);
         ListXMLGen.gen(modelName, fieldModels);
+        ListItemXMLGen.gen(modelName,fieldModels);
+        MenuAddGen.gen();
+        MenuDoneGen.gen();
+        MenuEditGen.gen();
+        ColorGen.gen();
     }
 
 

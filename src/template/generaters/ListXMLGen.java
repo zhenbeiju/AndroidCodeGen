@@ -1,6 +1,9 @@
 package template.generaters;
 
 import template.FieldModel;
+import template.KeyList;
+import template.util.FileUtil;
+import template.util.StringCaseUtil;
 
 import java.util.List;
 
@@ -30,7 +33,9 @@ public class ListXMLGen {
             "\n" +
             "</LinearLayout>";
 
-    public static void gen(String name, List<FieldModel> models) {
+    public static void gen(String fileName, List<FieldModel> models) {
+
+        FileUtil.exportString(KeyList.res_path+"layout/fragment_list_"+ StringCaseUtil.XMLCase(fileName)+".xml",CLASS_TEMPLATE);
 //        System.out.println(CLASS_TEMPLATE);
         //TODO
     }

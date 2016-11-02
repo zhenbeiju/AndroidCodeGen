@@ -14,12 +14,15 @@ public class FileUtil {
     public static void exportString(String path, String content) {
         ArrayList<String> srcArray = new ArrayList<>();
         srcArray.add(content);
-        writeArrayStringToFile(srcArray, path, null, false);
-
+        writeArrayStringToFile(srcArray, path, null, false,false);
     }
 
-    public static void writeArrayStringToFile(ArrayList<String> srcArray, String destFile, String trim, boolean isAdd) {
-        System.out.println("try output");
+    public static void writeArrayStringToFile(ArrayList<String> srcArray, String destFile, String trim, boolean isAdd,boolean canReWrite) {
+        while (destFile.contains("/")){
+            destFile = destFile.replace("/",File.separator);
+        }
+        System.out.println(destFile);
+
         if (srcArray != null && srcArray.size() > 0) {
             File file = new File(destFile);
             BufferedWriter output = null;
@@ -31,6 +34,11 @@ public class FileUtil {
                     file.createNewFile();
                 } catch (IOException var17) {
                     var17.printStackTrace();
+                }
+            }else {
+                if(!canReWrite){
+                    System.err.println("File:"+destFile +",exits ,will not create");
+                    return;
                 }
             }
 
@@ -57,7 +65,6 @@ public class FileUtil {
                         var16.printStackTrace();
                     }
                 }
-
             }
         } else {
             System.out.println("none value");

@@ -8,16 +8,23 @@ import template.util.StringCaseUtil;
 import java.util.List;
 
 /**
- * Created by zhanglin on 16-10-12.
+ * Created by wy on 2016/11/2.
  */
-public class DisplayXMLGen {
-    private static String CLASS_TEMPLATE = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-            "<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
+public class ListItemXMLGen {
+    private static String CLASS_TEMPLATE = "" +
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+            "<android.support.v7.widget.CardView xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
             "    android:layout_width=\"match_parent\"\n" +
-            "    android:layout_height=\"match_parent\"\n" +
-            "    android:orientation=\"vertical\">\n\n" +
+            "    android:layout_height=\"wrap_content\"\n" +
+            "    android:layout_margin=\"8dp\">\n" +
+            "\n" +
+            "    <LinearLayout\n" +
+            "        android:layout_width=\"match_parent\"\n" +
+            "        android:layout_height=\"wrap_content\"\n" +
+            "        android:orientation=\"vertical\">\n\n"+
             "    #{UIITEM}" +
-            "</LinearLayout>";
+            "    </LinearLayout>\n" +
+            "</android.support.v7.widget.CardView>";
 
     public static String UITEMPLATE = " <LinearLayout\n" +
             "        android:layout_width=\"match_parent\"\n" +
@@ -27,7 +34,7 @@ public class DisplayXMLGen {
             "        <TextView\n" +
             "            android:id=\"@+id/#{fieldName.XMLCase}_desc\"\n" +
             "            android:layout_width=\"wrap_content\"\n" +
-            "            android:layout_height=\"60dp\"\n" +
+            "            android:layout_height=\"40dp\"\n" +
             "            android:layout_marginLeft=\"14dp\"\n" +
             "            android:gravity=\"center_vertical\"\n" +
             "            android:text=\"#{fieldName.upcase}:\"\n" +
@@ -37,7 +44,7 @@ public class DisplayXMLGen {
             "        <TextView\n" +
             "            android:id=\"@+id/#{fieldName.XMLCase}\"\n" +
             "            android:layout_width=\"match_parent\"\n" +
-            "            android:layout_height=\"60dp\"\n" +
+            "            android:layout_height=\"40dp\"\n" +
             "            android:layout_marginLeft=\"30dp\"\n" +
             "            android:layout_weight=\"1\"\n" +
             "            android:gravity=\"center_vertical\"\n" +
@@ -52,7 +59,7 @@ public class DisplayXMLGen {
             "        android:layout_height=\"0.2dp\"\n" +
             "        android:background=\"@color/dark_4f\"></View>\n";
 
-    public static void gen(String fileName, List<FieldModel> models) {
+    public static void gen(String modelName, List<FieldModel> models){
         StringBuilder builder = new StringBuilder();
         for (FieldModel model : models) {
             String uiItem = UITEMPLATE.replaceAll("#\\{fieldName.XMLCase\\}", StringCaseUtil.XMLCase(model.name))
@@ -60,7 +67,6 @@ public class DisplayXMLGen {
             builder.append(uiItem);
         }
         String result = CLASS_TEMPLATE.replace("#{UIITEM}", builder.toString());
-        FileUtil.exportString(KeyList.res_path+"layout/fragment_show_"+StringCaseUtil.XMLCase(fileName)+".xml",result);
-//        System.out.println(result);
+        FileUtil.exportString(KeyList.res_path+"layout/item_"+StringCaseUtil.XMLCase(modelName)+".xml",result);
     }
 }

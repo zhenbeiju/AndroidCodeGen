@@ -7,7 +7,7 @@ public class CodeTemplate {
 
     public static String editTextXmlName = "" +
             "  <EditText\n" +
-            "            android:id=\"@+id/#{field.XMLCase}\"\n" +
+            "            android:id=\"@+id/#{fieldName.XMLCase}\"\n" +
             "            android:layout_width=\"match_parent\"\n" +
             "            android:layout_height=\"60dp\"\n" +
             "            android:layout_marginLeft=\"30dp\"\n" +
@@ -19,7 +19,7 @@ public class CodeTemplate {
             "            android:textSize=\"15sp\" />";
     public static String editNumberXmlName = "" +
             "  <EditText\n" +
-            "            android:id=\"@+id/#{field.XMLCase}\"\n" +
+            "            android:id=\"@+id/#{fieldName.XMLCase}\"\n" +
             "            android:layout_width=\"match_parent\"\n" +
             "            android:layout_height=\"60dp\"\n" +
             "            android:layout_marginLeft=\"30dp\"\n" +
@@ -31,7 +31,7 @@ public class CodeTemplate {
             "            android:textSize=\"15sp\" />";
     public static String editPasswordXmlName = "" +
             "  <EditText\n" +
-            "            android:id=\"@+id/#{field.XMLCase}\"\n" +
+            "            android:id=\"@+id/#{fieldName.XMLCase}\"\n" +
             "            android:layout_width=\"match_parent\"\n" +
             "            android:layout_height=\"60dp\"\n" +
             "            android:layout_marginLeft=\"30dp\"\n" +
@@ -43,7 +43,7 @@ public class CodeTemplate {
             "            android:textSize=\"15sp\" />";
     public static String editEmailXmlName = "" +
             "  <EditText\n" +
-            "            android:id=\"@+id/#{field.XMLCase}\"\n" +
+            "            android:id=\"@+id/#{fieldName.XMLCase}\"\n" +
             "            android:layout_width=\"match_parent\"\n" +
             "            android:layout_height=\"60dp\"\n" +
             "            android:layout_marginLeft=\"30dp\"\n" +
