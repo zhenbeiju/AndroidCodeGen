@@ -21,7 +21,7 @@ public class FileUtil {
         while (destFile.contains("/")){
             destFile = destFile.replace("/",File.separator);
         }
-        System.out.println(destFile);
+
 
         if (srcArray != null && srcArray.size() > 0) {
             File file = new File(destFile);
@@ -32,12 +32,14 @@ public class FileUtil {
                 }
                 try {
                     file.createNewFile();
+                    System.out.println("generate file:\""+destFile +"\"");
                 } catch (IOException var17) {
                     var17.printStackTrace();
                 }
+
             }else {
                 if(!canReWrite){
-                    System.err.println("File:"+destFile +",exits ,will not create");
+                    System.err.println("file:\""+destFile +"\" exits ,will not over write");
                     return;
                 }
             }

@@ -195,8 +195,6 @@ public class ListGen {
                 set = set.replace("#Content{" + content + "}", deFormater);
             }
             setBuilder.append(set);
-
-
         }
 
         String result = CLASS_TEMPLATE.replaceAll("#\\{name.upcase\\}", StringCaseUtil.UpCase(name))
