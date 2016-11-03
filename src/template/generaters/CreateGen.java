@@ -36,7 +36,7 @@ public class CreateGen {
             "        if (object != null && object[0] != null) {\n"+
             "            this.#{name.lowercase} = (#{name.upcase})object[0];\n" +
             "        } else {\n"+
-            "            this.test = new Test();\n" +
+            "            this.#{name.lowercase} = new #{name.upcase}();\n" +
             "        }\n"+
             "    }\n\n" +
             "    @Nullable\n" +

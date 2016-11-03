@@ -64,7 +64,7 @@ public class DisplayGen {
             "            jumpToFragment(Create#{name.upcase}Fragment.class, #{name.lowercase});\n" +
             "            return true;\n" +
             "        }else if(item.getItemId() ==R.id.menu_delete){\n" +
-            "            if(TestManager.delete(#{name.lowercase})){\n" +
+            "            if(#{name.upcase}Manager.delete(#{name.lowercase})){\n" +
             "                getActivity().onBackPressed();\n" +
             "            }else{\n" +
             "                DialogInfo.showToast(\"delete fail!\");\n" +

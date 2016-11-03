@@ -86,7 +86,7 @@ public class ListGen {
             "    public void getData() {\n" +
             "       //TODO refreshData\n" +
             "        swipe.setRefreshing(true);\n" +
-            "        tests =TestManager.getTests();\n" +
+            "        #{name.lowercase}s =#{name.upcase}Manager.get#{name.upcase}s();\n" +
             "        myAdapter.notifyDataSetChanged();\n"+
             "        swipe.setRefreshing(false);\n"+
             "    }\n" +
@@ -107,7 +107,7 @@ public class ListGen {
             "    public boolean onOptionsItemSelected(MenuItem item) {\n" +
             "        if (item.getItemId() == R.id.menu_add) {\n" +
             "            //TODO jump to create page\n" +
-            "            jumpToFragment(CreateTestFragment.class);\n"+
+            "            jumpToFragment(Create#{name.upcase}Fragment.class);\n"+
             "            return true;\n" +
             "        }\n" +
             "        return super.onOptionsItemSelected(item);\n" +
@@ -128,7 +128,7 @@ public class ListGen {
             "\n" +
             "        @Override\n" +
             "        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {\n" +
-            "            View view = inflater.inflate(R.layout.item_#{name.XMLCase}, null);\n" +
+            "            View view = inflater.inflate(R.layout.item_#{name.XMLCase}, parent, false);\n" +
             "            ViewHolder holder = new ViewHolder(view);\n" +
             "            return holder;\n" +
             "        }\n" +
@@ -163,7 +163,7 @@ public class ListGen {
             "                @Override\n" +
             "                public void onClick(View v) {\n" +
             "                    //TODO please overwrite blow code\n" +
-            "                    jumpToFragment(ShowTestFragment.class, #{name.lowercase});"+
+            "                    jumpToFragment(Show#{name.upcase}Fragment.class, #{name.lowercase});"+
             "                }\n" +
             "            });\n" +
             "        }\n" +

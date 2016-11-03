@@ -33,14 +33,17 @@ public class ManagerGen {
             "    //TODO please overwrite blow code\n" +
             "    public static boolean insertOrUpdate(#{name.upcase} #{name.lowercase}) {\n" +
             "        synchronized (#{name.lowercase}s) {\n" +
-            "            return tests.add(#{name.lowercase});\n" +
+            "            if(!#{name.lowercase}s.contains( #{name.lowercase})){\n" +
+            "                return  #{name.lowercase}s.add( #{name.lowercase});\n" +
+            "            }\n" +
+            "            return true;"+
             "        }\n" +
             "    }\n" +
             "\n" +
             "    //TODO please overwrite blow code\n" +
             "    public static boolean delete(#{name.upcase} #{name.lowercase}) {\n" +
             "        synchronized (#{name.lowercase}s) {\n" +
-            "            return tests.remove(#{name.lowercase});\n" +
+            "            return #{name.lowercase}s.remove(#{name.lowercase});\n" +
             "        }\n" +
             "    }\n" +
             "}\n";
