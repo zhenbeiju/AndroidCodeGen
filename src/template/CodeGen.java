@@ -16,7 +16,6 @@ public class CodeGen {
         this.modelName = modelName;
     }
 
-
     public void doGenerate() {
         ModelGen.gen(modelName, fieldModels);
         CreateGen.gen(modelName, fieldModels);
@@ -29,8 +28,8 @@ public class CodeGen {
         MenuAddGen.gen();
         MenuDoneGen.gen();
         MenuEditGen.gen();
+        MenuDeleteGen.gen();
         ColorGen.gen();
+        ManagerGen.gen(modelName);
     }
-
-
 }

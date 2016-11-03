@@ -14,7 +14,7 @@ public class MenuDeleteGen {
             "\n" +
             "    <item\n" +
             "        android:id=\"@+id/menu_delete\"\n" +
-            "        android:title=\"done\"\n" +
+            "        android:title=\"delete\"\n" +
             "        app:showAsAction=\"always\" />\n" +
             "\n" +
             "</menu>";

@@ -14,7 +14,7 @@ public class MenuEditGen {
             "\n" +
             "    <item\n" +
             "        android:id=\"@+id/menu_edit\"\n" +
-            "        android:title=\"done\"\n" +
+            "        android:title=\"edit\"\n" +
             "        app:showAsAction=\"always\" />\n" +
             "\n" +
             "</menu>";

@@ -27,16 +27,17 @@ public class CreateGen {
             "import #{packageName}.R;\n" +
             "import #{packageName}.model.#{name.upcase};\n" +
             "import commanutil.base.BaseFragment;\n" +
+            "import #{packageName}.model.#{name.upcase}Manager;\n\n"+
             "public class Create#{name.upcase}Fragment extends BaseFragment {\n" +
             "    private #{name.upcase} #{name.lowercase};\n" +
             "#{UIItems}\n" +
             "    @Override\n" +
             "    public void setData(Object... object) {\n" +
-            "        if (object != null && object[0] != null) {"+
+            "        if (object != null && object[0] != null) {\n"+
             "            this.#{name.lowercase} = (#{name.upcase})object[0];\n" +
-            "        } else {"+
+            "        } else {\n"+
             "            this.test = new Test();\n" +
-            "        }"+
+            "        }\n"+
             "    }\n\n" +
             "    @Nullable\n" +
             "    @Override\n" +
@@ -54,7 +55,7 @@ public class CreateGen {
             "    public void updateUI() {\n" +
             "        if (#{name.lowercase} != null) {\n" +
             "            //TODO update UI\n" +
-            "            #{setUIItem}\n" +
+            "#{setUIItem}\n" +
             "        }\n" +
             "    }\n\n" +
             "    @Override\n" +
@@ -64,9 +65,12 @@ public class CreateGen {
             "    }\n\n" +
             "    @Override\n" +
             "    public boolean onOptionsItemSelected(MenuItem item) {\n" +
-            "        if (item.getItemId() == R.menu.done) {\n" +
+            "        if (item.getItemId() == R.id.menu_done) {\n" +
             "            //TODO READ VALUE\n" +
-            "            #{getUIItem}\n" +
+            "            if (#{name.lowercase} == null) {\n" +
+            "                #{name.lowercase} = new #{name.upcase}();\n" +
+            "            }\n"+
+            "#{getUIItem}\n" +
             "\n" +
             "            //TODO please overwrite blow code\n" +
             "            if (#{name.upcase}Manager.insertOrUpdate(#{name.lowercase})) {\n" +

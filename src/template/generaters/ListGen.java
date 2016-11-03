@@ -35,6 +35,7 @@ public class ListGen {
             "import commanutil.base.BaseFragment;\n" +
             "import #{packageName}.fragment.Create#{name.upcase}Fragment;\n" +
             "import #{packageName}.fragment.Show#{name.upcase}Fragment;\n" +
+            "import #{packageName}.model.#{name.upcase}Manager;\n\n"+
             "import java.util.List;\n" +
             "import java.util.ArrayList;\n" +
 
@@ -50,7 +51,9 @@ public class ListGen {
             "\n" +
             "    @Override\n" +
             "    public void setData(Object... object) {\n" +
-            "        this.#{name.lowercase}s = (List<#{name.upcase}>)object[0];\n" +
+            "        if (object != null && object[0] != null) {\n"+
+            "            this.#{name.lowercase}s = (List<#{name.upcase}>)object[0];\n" +
+            "        }\n"+
             "    }\n" +
             "\n" +
             "    @Nullable\n" +
@@ -78,11 +81,14 @@ public class ListGen {
             "        super.onResume();\n" +
             "        getData();\n" +
             "        swipe.setEnabled(true);\n" +
-            "        swipe.setRefreshing(true);\n" +
             "    }\n" +
             "\n" +
             "    public void getData() {\n" +
             "       //TODO refreshData\n" +
+            "        swipe.setRefreshing(true);\n" +
+            "        tests =TestManager.getTests();\n" +
+            "        myAdapter.notifyDataSetChanged();\n"+
+            "        swipe.setRefreshing(false);\n"+
             "    }\n" +
             "\n" +
             "    @Override\n" +
@@ -99,8 +105,9 @@ public class ListGen {
             "\n" +
             "    @Override\n" +
             "    public boolean onOptionsItemSelected(MenuItem item) {\n" +
-            "        if (item.getItemId() == R.menu.add) {\n" +
+            "        if (item.getItemId() == R.id.menu_add) {\n" +
             "            //TODO jump to create page\n" +
+            "            jumpToFragment(CreateTestFragment.class);\n"+
             "            return true;\n" +
             "        }\n" +
             "        return super.onOptionsItemSelected(item);\n" +
@@ -155,15 +162,16 @@ public class ListGen {
             "            itemView.setOnClickListener(new View.OnClickListener() {\n" +
             "                @Override\n" +
             "                public void onClick(View v) {\n" +
-            "                    //TODO\n" +
+            "                    //TODO please overwrite blow code\n" +
+            "                    jumpToFragment(ShowTestFragment.class, #{name.lowercase});"+
             "                }\n" +
             "            });\n" +
             "        }\n" +
             "    }\n" +
             "}\n";
-    public static String FIELD_TEMPLATE = "\t\tprivate TextView #{fieldName.lowercase}Tv;\n";
-    public static String FIND_TEMPLATE = "\t\t#{fieldName.lowercase}Tv = (TextView)itemView.findViewById(R.id.#{fieldName.XMLCase});\n";
-    public static String SET_TEMPLATE = "\t\t\t#{fieldName.lowercase}Tv.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
+    public static String FIELD_TEMPLATE = "        private TextView #{fieldName.lowercase}Tv;\n";
+    public static String FIND_TEMPLATE = "        #{fieldName.lowercase}Tv = (TextView)itemView.findViewById(R.id.#{fieldName.XMLCase});\n";
+    public static String SET_TEMPLATE = "            #{fieldName.lowercase}Tv.setText(#Content{#{name.lowercase}.get#{fieldName.upcase}()});\n";
 
     public static void gen(String name, List<FieldModel> models) {
 
