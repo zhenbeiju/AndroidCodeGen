@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9dcba6f-14da-43eb-8380-3ba162623a51" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/KeyList.java" afterPath="$PROJECT_DIR$/src/template/KeyList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/CreateGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/CreateGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/DisplayGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/DisplayGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/ListGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/ListGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/ManagerGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/ManagerGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/template/generaters/ModelGen.java" afterPath="$PROJECT_DIR$/src/template/generaters/ModelGen.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Readme.md" afterPath="$PROJECT_DIR$/Readme.md" />
     </list>
     <ignored path="AndroidCodeGen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -107,8 +97,8 @@
         <entry file="file://$PROJECT_DIR$/Readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="555">
-                <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="27" />
+              <first_editor relative-caret-position="444">
+                <caret line="21" column="95" selection-start-line="21" selection-start-column="95" selection-end-line="21" selection-end-column="95" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -1142,8 +1132,8 @@
     <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="555">
-            <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="27" />
+          <first_editor relative-caret-position="444">
+            <caret line="21" column="95" selection-start-line="21" selection-start-column="95" selection-end-line="21" selection-end-column="95" />
             <folding />
           </first_editor>
           <second_editor />
