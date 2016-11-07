@@ -16,9 +16,9 @@
   `FieldType`  the model field type, support int,string,float,double,name,password
        
   ####example:
-* 1. cd code path  
+* 1.cd code path  
       cd project/module/src/main/java/com/test/testFragment/
-* 2. generate code    
+* 2.generate code    
    `java -jar D:\AndroidCodeGen-0.1.jar -g student -attr age int name string weight float`  
           
      `D:\AndroidCodeGen-0.1.jar` is jar file path  
