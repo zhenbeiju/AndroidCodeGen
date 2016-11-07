@@ -27,17 +27,17 @@ public class CreateGen {
             "import #{packageName}.R;\n" +
             "import #{packageName}.model.#{name.upcase};\n" +
             "import commanutil.base.BaseFragment;\n" +
-            "import #{packageName}.model.#{name.upcase}Manager;\n\n"+
+            "import #{packageName}.model.#{name.upcase}Manager;\n\n" +
             "public class Create#{name.upcase}Fragment extends BaseFragment {\n" +
             "    private #{name.upcase} #{name.lowercase};\n" +
             "#{UIItems}\n" +
             "    @Override\n" +
             "    public void setData(Object... object) {\n" +
-            "        if (object != null && object[0] != null) {\n"+
+            "        if (object != null && object[0] != null) {\n" +
             "            this.#{name.lowercase} = (#{name.upcase})object[0];\n" +
-            "        } else {\n"+
+            "        } else {\n" +
             "            this.#{name.lowercase} = new #{name.upcase}();\n" +
-            "        }\n"+
+            "        }\n" +
             "    }\n\n" +
             "    @Nullable\n" +
             "    @Override\n" +
@@ -69,13 +69,13 @@ public class CreateGen {
             "            //TODO READ VALUE\n" +
             "            if (#{name.lowercase} == null) {\n" +
             "                #{name.lowercase} = new #{name.upcase}();\n" +
-            "            }\n"+
+            "            }\n" +
             "#{getUIItem}\n" +
             "\n" +
             "            //TODO please overwrite blow code\n" +
             "            if (#{name.upcase}Manager.insertOrUpdate(#{name.lowercase})) {\n" +
             "                getActivity().onBackPressed();\n" +
-            "            }"+
+            "            }" +
             "\n" +
             "            return true;\n" +
             "        }\n" +
@@ -136,7 +136,7 @@ public class CreateGen {
                 .replaceAll("#\\{UIItems\\}", fieldBuilder.toString());
 //        System.out.println(result);
         FileUtil.exportString(
-                "./fragment/Create#{name.upcase}Fragment.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
+                KeyList.class_path + "/fragment/Create#{name.upcase}Fragment.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
                 , result);
 
     }

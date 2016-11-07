@@ -8,7 +8,7 @@ import template.util.StringCaseUtil;
  * Created by wy on 2016/11/2.
  */
 public class ManagerGen {
-    static String CLASS_TEMPLATE="package #{packageName}.model;\n\n" +
+    static String CLASS_TEMPLATE = "package #{packageName}.model;\n\n" +
             "\n" +
             "import java.lang.reflect.Array;\n" +
             "import java.util.ArrayList;\n" +
@@ -36,7 +36,7 @@ public class ManagerGen {
             "            if(!#{name.lowercase}s.contains( #{name.lowercase})){\n" +
             "                return  #{name.lowercase}s.add( #{name.lowercase});\n" +
             "            }\n" +
-            "            return true;"+
+            "            return true;" +
             "        }\n" +
             "    }\n" +
             "\n" +
@@ -47,11 +47,12 @@ public class ManagerGen {
             "        }\n" +
             "    }\n" +
             "}\n";
-    public static void gen(String fileName){
+
+    public static void gen(String fileName) {
         String result = CLASS_TEMPLATE.replaceAll("#\\{name.upcase}", StringCaseUtil.UpCase(fileName))
-                .replaceAll("#\\{name.lowercase}",StringCaseUtil.LowCase(fileName))
+                .replaceAll("#\\{name.lowercase}", StringCaseUtil.LowCase(fileName))
                 .replaceAll("#\\{packageName}", KeyList.packageName);
         FileUtil.exportString(
-                "./model/#{name.upcase}Manager.java".replace("#{name.upcase}",StringCaseUtil.UpCase(fileName)),result);
+                KeyList.class_path + "/model/#{name.upcase}Manager.java".replace("#{name.upcase}", StringCaseUtil.UpCase(fileName)), result);
     }
 }

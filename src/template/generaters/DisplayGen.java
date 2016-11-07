@@ -25,25 +25,25 @@ public class DisplayGen {
             "import android.widget.TextView;\n\n" +
             "import #{packageName}.R;\n" +
             "import #{packageName}.model.#{name.upcase};\n" +
-            "import #{packageName}.model.#{name.upcase}Manager;\n"+
+            "import #{packageName}.model.#{name.upcase}Manager;\n" +
             "import commanutil.base.BaseFragment;\n" +
-            "import commanutil.view.DialogInfo;\n"+
-            "\n"+
+            "import commanutil.view.DialogInfo;\n" +
+            "\n" +
             "public class Show#{name.upcase}Fragment extends BaseFragment {\n" +
             "    private #{name.upcase} #{name.lowercase};\n" +
             "#{UIItems}\n" +
             "    @Override\n" +
             "    public void setData(Object... object) {\n" +
-            "        if (object != null && object[0] != null) {\n"+
+            "        if (object != null && object[0] != null) {\n" +
             "            this.#{name.lowercase} = (#{name.upcase})object[0];\n" +
-            "        }\n"+
+            "        }\n" +
             "    }\n\n" +
             "    @Nullable\n" +
             "    @Override\n" +
             "    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n" +
             "        View view = inflater.inflate(R.layout.fragment_show_#{name.XMLCase}, null);\n" +
             "#{findUIItem}\n" +
-            "        setHasOptionsMenu(true);\n"+
+            "        setHasOptionsMenu(true);\n" +
             "        return view;\n" +
             "    }\n\n" +
             "    @Override\n" +
@@ -72,7 +72,7 @@ public class DisplayGen {
             "            return true;\n" +
             "        }\n" +
             "        return super.onOptionsItemSelected(item);\n" +
-            "    }"+
+            "    }" +
             "    public void updateUI() {\n" +
             "        if (#{name.lowercase} != null) {\n" +
             "            //TODO update UI\n" +
@@ -117,7 +117,7 @@ public class DisplayGen {
                 .replaceAll("#\\{UIItems\\}", fieldBuilder.toString());
 //        System.out.println(result);
         FileUtil.exportString(
-                "./fragment/Show#{name.upcase}Fragment.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
+                KeyList.class_path + "/fragment/Show#{name.upcase}Fragment.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
                 , result);
     }
 

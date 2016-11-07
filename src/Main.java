@@ -37,7 +37,7 @@ public class Main {
         }
 
         if (init()) {
-            if(checkParam(packageName)){
+            if (checkParam(packageName)) {
                 KeyList.packageName = packageName;
             }
             CodeGen codeGen = new CodeGen(modelName, fieldModels);
@@ -52,15 +52,27 @@ public class Main {
         String path = FileUtil.getPath();
         System.out.println(path);
         KeyList.res_path = path.substring(0, path.lastIndexOf("java")) + "res" + File.separator;
-        System.out.println(KeyList.res_path);
+
         // replace all not work
-        while (path.contains(File.separator)) {
-            path = path.replace(File.separator, ".");
+        if (packageName == null) {
+            String packgeName = path.substring(path.lastIndexOf("java") + 5);
+            while (packgeName.contains(File.separator)) {
+                packgeName = packgeName.replace(File.separator, ".");
+            }
+            KeyList.packageName = packgeName;
+        } else {
+            KeyList.packageName = packageName;
         }
-        String packgeName = path.substring(path.lastIndexOf("java") + 5);
-        System.out.println(packgeName);
-        KeyList.class_path = path;
-        KeyList.packageName = packgeName;
+
+        String codepath = KeyList.packageName;
+        while (codepath.contains(".")) {
+            codepath = KeyList.packageName.replace(".", File.separator);
+        }
+        KeyList.class_path = path.substring(0, path.lastIndexOf("java")) + "java" + File.separator + codepath;
+
+        System.out.print(KeyList.class_path);
+        System.out.println(KeyList.packageName);
+        System.out.println(KeyList.res_path);
         return true;
     }
 
@@ -116,12 +128,12 @@ public class Main {
                 try {
                     for (int i = 0; i < attrs.size(); i += 2) {
                         String name = attrs.get(i);
-                        String type = attrs.get(i+1);
+                        String type = attrs.get(i + 1);
                         try {
                             FieldType type1 = FieldType.valueOf(type.toUpperCase());
                             FieldModel model = new FieldModel(name, type1);
                             fieldModels.add(model);
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             System.err.println(" fieldType not support :\n support type is: int, string, float, double, name, email, password");
                             return false;
                         }

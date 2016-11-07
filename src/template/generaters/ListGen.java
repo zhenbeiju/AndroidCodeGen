@@ -35,7 +35,7 @@ public class ListGen {
             "import commanutil.base.BaseFragment;\n" +
             "import #{packageName}.fragment.Create#{name.upcase}Fragment;\n" +
             "import #{packageName}.fragment.Show#{name.upcase}Fragment;\n" +
-            "import #{packageName}.model.#{name.upcase}Manager;\n\n"+
+            "import #{packageName}.model.#{name.upcase}Manager;\n\n" +
             "import java.util.List;\n" +
             "import java.util.ArrayList;\n" +
 
@@ -51,9 +51,9 @@ public class ListGen {
             "\n" +
             "    @Override\n" +
             "    public void setData(Object... object) {\n" +
-            "        if (object != null && object[0] != null) {\n"+
+            "        if (object != null && object[0] != null) {\n" +
             "            this.#{name.lowercase}s = (List<#{name.upcase}>)object[0];\n" +
-            "        }\n"+
+            "        }\n" +
             "    }\n" +
             "\n" +
             "    @Nullable\n" +
@@ -87,8 +87,8 @@ public class ListGen {
             "       //TODO refreshData\n" +
             "        swipe.setRefreshing(true);\n" +
             "        #{name.lowercase}s =#{name.upcase}Manager.get#{name.upcase}s();\n" +
-            "        myAdapter.notifyDataSetChanged();\n"+
-            "        swipe.setRefreshing(false);\n"+
+            "        myAdapter.notifyDataSetChanged();\n" +
+            "        swipe.setRefreshing(false);\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
@@ -107,7 +107,7 @@ public class ListGen {
             "    public boolean onOptionsItemSelected(MenuItem item) {\n" +
             "        if (item.getItemId() == R.id.menu_add) {\n" +
             "            //TODO jump to create page\n" +
-            "            jumpToFragment(Create#{name.upcase}Fragment.class);\n"+
+            "            jumpToFragment(Create#{name.upcase}Fragment.class);\n" +
             "            return true;\n" +
             "        }\n" +
             "        return super.onOptionsItemSelected(item);\n" +
@@ -163,7 +163,7 @@ public class ListGen {
             "                @Override\n" +
             "                public void onClick(View v) {\n" +
             "                    //TODO please overwrite blow code\n" +
-            "                    jumpToFragment(Show#{name.upcase}Fragment.class, #{name.lowercase});"+
+            "                    jumpToFragment(Show#{name.upcase}Fragment.class, #{name.lowercase});" +
             "                }\n" +
             "            });\n" +
             "        }\n" +
@@ -205,7 +205,7 @@ public class ListGen {
                 .replaceAll("#\\{findUIItem\\}", findBuilder.toString())
                 .replaceAll("#\\{UIItem\\}", fieldBuilder.toString());
 //        System.out.println(result);
-        FileUtil.exportString("./fragment/List#{name.upcase}Fragment.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
+        FileUtil.exportString(KeyList.class_path + "/fragment/List#{name.upcase}Fragment.java".replace("#{name.upcase}", StringCaseUtil.UpCase(name))
                 , result);
     }
 
