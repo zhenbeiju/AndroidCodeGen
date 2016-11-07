@@ -18,9 +18,9 @@
   ####example:
 * 1. cd code path  
       cd project/module/src/main/java/com/test/testFragment/
-* 2. generate code  
-      `java -jar D:\AndroidCodeGen-0.1.jar -g student -attr age int name string weight float`  
+* 2. generate code    
+   `java -jar D:\AndroidCodeGen-0.1.jar -g student -attr age int name string weight float`  
           
-      `D:\AndroidCodeGen-0.1.jar` is jar file path  
+     `D:\AndroidCodeGen-0.1.jar` is jar file path  
       `student` is model name  
       `age\name\weight` is attribute
